@@ -3,12 +3,61 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import LandingPage from '@/components/LandingPage';
 import Dashboard from '@/components/Dashboard';
+import CalendarPage from '@/components/CalendarPage';
 
 const Index = () => {
-  const [currentView, setCurrentView] = useState<'landing' | 'dashboard'>('landing');
+  const [currentView, setCurrentView] = useState<'landing' | 'dashboard' | 'calendar'>('landing');
 
   if (currentView === 'dashboard') {
-    return <Dashboard />;
+    return (
+      <div className="relative">
+        <Dashboard />
+        {/* Navigation buttons for demo */}
+        <div className="fixed bottom-6 right-6 z-50 flex space-x-2">
+          <Button
+            onClick={() => setCurrentView('calendar')}
+            size="sm"
+            className="bg-blue-600 hover:bg-blue-700 shadow-lg"
+          >
+            📅 Calendário
+          </Button>
+          <Button
+            onClick={() => setCurrentView('landing')}
+            size="sm"
+            variant="outline"
+            className="shadow-lg"
+          >
+            🏠 Landing
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  if (currentView === 'calendar') {
+    return (
+      <div className="relative">
+        <CalendarPage />
+        {/* Navigation buttons for demo */}
+        <div className="fixed bottom-6 right-6 z-50 flex space-x-2">
+          <Button
+            onClick={() => setCurrentView('dashboard')}
+            size="sm"
+            className="bg-blue-600 hover:bg-blue-700 shadow-lg"
+          >
+            📊 Dashboard
+          </Button>
+          <Button
+            onClick={() => setCurrentView('landing')}
+            size="sm"
+            variant="outline"
+            className="shadow-lg"
+          >
+            🏠 Landing
+          </Button>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -16,7 +65,7 @@ const Index = () => {
       <LandingPage />
       
       {/* Demo Access Button */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-6 right-6 z-50 flex space-x-2">
         <Button
           onClick={() => setCurrentView('dashboard')}
           size="lg"
