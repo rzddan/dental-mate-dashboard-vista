@@ -1,76 +1,140 @@
 
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Menu, X, ChevronRight, Star, Shield, Clock, Users, TrendingUp, Brain, Calendar, Activity } from 'lucide-react';
+import { 
+  Calendar, 
+  Users, 
+  TrendingUp, 
+  DollarSign, 
+  Star,
+  Check,
+  Brain,
+  Shield,
+  Zap,
+  Heart,
+  ChevronRight,
+  Menu,
+  X
+} from 'lucide-react';
+import { useState } from 'react';
 
 const LandingPage = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const benefits = [
+  const features = [
     {
       icon: <Calendar className="w-8 h-8 text-blue-600" />,
       title: "Agendamento Inteligente",
-      description: "Sistema automatizado que otimiza sua agenda e reduz faltas em 40%"
+      description: "Sistema de agendamento com IA que otimiza sua agenda e reduz cancelamentos em até 30%."
     },
     {
-      icon: <Activity className="w-8 h-8 text-blue-600" />,
-      title: "Gestão Completa",
-      description: "Prontuários digitais, controle financeiro e relatórios em uma plataforma"
+      icon: <Users className="w-8 h-8 text-green-600" />,
+      title: "Gestão de Pacientes",
+      description: "Prontuário eletrônico completo com histórico detalhado e lembretes automáticos."
     },
     {
-      icon: <Brain className="w-8 h-8 text-blue-600" />,
-      title: "IA para Insights",
-      description: "Análises preditivas que ajudam você a tomar melhores decisões"
+      icon: <DollarSign className="w-8 h-8 text-purple-600" />,
+      title: "Controle Financeiro",
+      description: "Dashboard financeiro completo com relatórios, fluxo de caixa e análise de rentabilidade."
     },
     {
-      icon: <Shield className="w-8 h-8 text-blue-600" />,
+      icon: <Brain className="w-8 h-8 text-orange-600" />,
+      title: "IA Insights",
+      description: "Análises inteligentes que identificam oportunidades de crescimento e otimização."
+    },
+    {
+      icon: <Shield className="w-8 h-8 text-red-600" />,
       title: "Segurança Total",
-      description: "Dados protegidos com criptografia e backup automático"
+      description: "Dados criptografados e backup automático. Conformidade com LGPD garantida."
     },
     {
-      icon: <TrendingUp className="w-8 h-8 text-blue-600" />,
-      title: "Crescimento Sustentável",
-      description: "Ferramentas que ajudam sua clínica a crescer de forma organizada"
-    },
-    {
-      icon: <Users className="w-8 h-8 text-blue-600" />,
-      title: "Experiência do Paciente",
-      description: "Portal do paciente e comunicação automatizada via WhatsApp"
+      icon: <Zap className="w-8 h-8 text-yellow-600" />,
+      title: "Automação",
+      description: "Lembretes automáticos, confirmações e follow-ups que economizam horas do seu dia."
     }
   ];
 
   const testimonials = [
     {
-      name: "Dr. Ana Silva",
+      name: "Dra. Ana Silva",
       specialty: "Ortodontista",
-      content: "O Dental Mate revolucionou minha clínica. Economizo 3 horas por dia em tarefas administrativas.",
+      avatar: "AS",
+      content: "O Dental Mate revolucionou minha clínica. Aumentei minha receita em 40% no primeiro ano!",
       rating: 5
     },
     {
-      name: "Dr. Carlos Mendes",
+      name: "Dr. Carlos Santos",
       specialty: "Implantodontista",
-      content: "A organização financeira ficou impecável. Sei exatamente quanto faturei e onde investir.",
+      avatar: "CS",
+      content: "Ferramenta indispensável. A IA me ajuda a identificar tendências que eu nunca notaria sozinho.",
       rating: 5
     },
     {
-      name: "Dra. Marina Costa",
+      name: "Dra. Maria Costa",
       specialty: "Dentista Geral",
-      content: "Meus pacientes adoram o portal. Consegui reduzir as faltas em 50% com os lembretes automáticos.",
+      avatar: "MC",
+      content: "Interface intuitiva e suporte excepcional. Recomendo para todos os colegas dentistas.",
       rating: 5
     }
   ];
 
+  const pricingPlans = [
+    {
+      name: "Starter",
+      price: "R$ 97",
+      period: "/mês",
+      description: "Perfeito para consultórios iniciantes",
+      features: [
+        "Até 500 pacientes",
+        "Agendamento básico",
+        "Controle financeiro",
+        "Suporte por email",
+        "1 usuário"
+      ],
+      popular: false
+    },
+    {
+      name: "Professional",
+      price: "R$ 197",
+      period: "/mês",
+      description: "Ideal para clínicas em crescimento",
+      features: [
+        "Pacientes ilimitados",
+        "IA Insights avançado",
+        "Automação completa",
+        "Suporte prioritário",
+        "Até 5 usuários",
+        "Relatórios avançados"
+      ],
+      popular: true
+    },
+    {
+      name: "Enterprise",
+      price: "R$ 397",
+      period: "/mês",
+      description: "Para grandes clínicas e franquias",
+      features: [
+        "Tudo do Professional",
+        "Multi-unidades",
+        "API personalizada",
+        "Gerente de sucesso",
+        "Usuários ilimitados",
+        "Treinamento presencial"
+      ],
+      popular: false
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-teal-50">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-sm border-b border-blue-100 sticky top-0 z-50">
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-teal-600 rounded-lg flex items-center justify-center">
-                <Activity className="w-5 h-5 text-white" />
+                <Heart className="w-5 h-5 text-white" />
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
                 Dental Mate
@@ -82,90 +146,87 @@ const LandingPage = () => {
               <a href="#features" className="text-gray-600 hover:text-blue-600 transition-colors">Recursos</a>
               <a href="#testimonials" className="text-gray-600 hover:text-blue-600 transition-colors">Depoimentos</a>
               <a href="#pricing" className="text-gray-600 hover:text-blue-600 transition-colors">Preços</a>
-              <Button variant="outline" className="border-blue-200 text-blue-600 hover:bg-blue-50">
-                Entrar
-              </Button>
-              <Button className="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700">
+              <Button variant="outline" size="sm">Login</Button>
+              <Button size="sm" className="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700">
                 Teste Grátis
               </Button>
             </nav>
 
             {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden"
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </Button>
           </div>
 
           {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <div className="md:hidden mt-4 p-4 bg-white rounded-lg border border-blue-100 shadow-lg">
-              <nav className="flex flex-col space-y-4">
-                <a href="#features" className="text-gray-600 hover:text-blue-600 transition-colors">Recursos</a>
-                <a href="#testimonials" className="text-gray-600 hover:text-blue-600 transition-colors">Depoimentos</a>
-                <a href="#pricing" className="text-gray-600 hover:text-blue-600 transition-colors">Preços</a>
-                <div className="flex flex-col space-y-2 pt-4 border-t border-gray-200">
-                  <Button variant="outline" className="border-blue-200 text-blue-600 hover:bg-blue-50">
-                    Entrar
-                  </Button>
-                  <Button className="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700">
-                    Teste Grátis
-                  </Button>
-                </div>
-              </nav>
-            </div>
+          {mobileMenuOpen && (
+            <nav className="md:hidden mt-4 pb-4 border-t border-gray-200 pt-4 space-y-3">
+              <a href="#features" className="block text-gray-600 hover:text-blue-600 transition-colors">Recursos</a>
+              <a href="#testimonials" className="block text-gray-600 hover:text-blue-600 transition-colors">Depoimentos</a>
+              <a href="#pricing" className="block text-gray-600 hover:text-blue-600 transition-colors">Preços</a>
+              <div className="flex flex-col space-y-2 pt-3">
+                <Button variant="outline" size="sm" className="w-full">Login</Button>
+                <Button size="sm" className="w-full bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700">
+                  Teste Grátis
+                </Button>
+              </div>
+            </nav>
           )}
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 lg:py-32">
+      <section className="py-12 md:py-20 bg-gradient-to-br from-blue-50 to-teal-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-6 bg-blue-100 text-blue-700 hover:bg-blue-200">
-              ✨ Mais de 5.000 dentistas confiam no Dental Mate
-            </Badge>
-            
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-teal-600 to-blue-800 bg-clip-text text-transparent leading-tight">
-              Transforme sua clínica odontológica
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              O sistema de gestão mais completo e intuitivo para dentistas que querem <strong>crescer</strong>, <strong>organizar</strong> e <strong>inovar</strong>
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
-              >
-                Começar Teste Grátis
-                <ChevronRight className="ml-2 w-5 h-5" />
-              </Button>
-              
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="border-2 border-blue-200 text-blue-600 hover:bg-blue-50 text-lg px-8 py-6 rounded-xl w-full sm:w-auto"
-              >
-                Ver Demonstração
-              </Button>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="text-center lg:text-left">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                O futuro da gestão
+                <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent block">
+                  odontológica
+                </span>
+              </h1>
+              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                Sistema completo com IA para dentistas que querem crescer, organizar e inovar. 
+                Aumente sua receita em até 40% no primeiro ano.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Button size="lg" className="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-lg px-8 py-3">
+                  Começar Teste Grátis
+                  <ChevronRight className="w-5 h-5 ml-2" />
+                </Button>
+                <Button variant="outline" size="lg" className="text-lg px-8 py-3">
+                  Ver Demonstração
+                </Button>
+              </div>
+              <p className="text-sm text-gray-500 mt-4">
+                ✅ 14 dias grátis • ✅ Sem cartão de crédito • ✅ Suporte incluído
+              </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-gray-500">
-              <div className="flex items-center">
-                <Shield className="w-4 h-4 mr-2 text-green-500" />
-                Teste por 30 dias grátis
-              </div>
-              <div className="flex items-center">
-                <Clock className="w-4 h-4 mr-2 text-green-500" />
-                Sem compromisso
-              </div>
-              <div className="flex items-center">
-                <Users className="w-4 h-4 mr-2 text-green-500" />
-                Suporte especializado
+            <div className="relative">
+              <div className="bg-white rounded-2xl shadow-2xl p-6 transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-semibold text-gray-900">Dashboard Hoje</h3>
+                    <Badge className="bg-green-100 text-green-700">+12% mês</Badge>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="bg-blue-50 p-4 rounded-lg">
+                      <div className="text-2xl font-bold text-blue-600">156</div>
+                      <div className="text-sm text-gray-600">Pacientes</div>
+                    </div>
+                    <div className="bg-green-50 p-4 rounded-lg">
+                      <div className="text-2xl font-bold text-green-600">R$ 28.5k</div>
+                      <div className="text-sm text-gray-600">Receita</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -173,31 +234,29 @@ const LandingPage = () => {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 bg-white">
+      <section id="features" className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Tudo que sua clínica precisa
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Ferramentas poderosas e intuitivas que simplificam seu dia a dia
+              Recursos poderosos desenvolvidos especialmente para dentistas modernos
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
-              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-blue-50/30">
-                <CardHeader className="pb-4">
-                  <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-4">
-                    {benefit.icon}
+            {features.map((feature, index) => (
+              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <CardHeader>
+                  <div className="w-16 h-16 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl flex items-center justify-center mb-4">
+                    {feature.icon}
                   </div>
-                  <CardTitle className="text-xl font-semibold text-gray-900">
-                    {benefit.title}
-                  </CardTitle>
+                  <CardTitle className="text-xl text-gray-900">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-600 text-base leading-relaxed">
-                    {benefit.description}
+                  <CardDescription className="text-gray-600 leading-relaxed">
+                    {feature.description}
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -207,37 +266,84 @@ const LandingPage = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 bg-gradient-to-br from-blue-50 to-teal-50">
+      <section id="testimonials" className="py-16 md:py-24 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-              O que nossos dentistas dizem
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Dentistas que confiam em nós
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Histórias reais de profissionais que transformaram suas clínicas
+            <p className="text-xl text-gray-600">
+              Mais de 2.000 profissionais já transformaram suas clínicas
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="border-0 shadow-lg bg-white hover:shadow-xl transition-all duration-300">
-                <CardHeader>
-                  <div className="flex items-center gap-1 mb-2">
+              <Card key={index} className="border-0 shadow-lg bg-white">
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center text-white font-semibold">
+                      {testimonial.avatar}
+                    </div>
+                    <div className="ml-4">
+                      <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
+                      <p className="text-sm text-gray-600">{testimonial.specialty}</p>
+                    </div>
+                  </div>
+                  <div className="flex mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
                     ))}
                   </div>
-                  <CardTitle className="text-lg font-semibold text-gray-900">
-                    {testimonial.name}
-                  </CardTitle>
-                  <CardDescription className="text-blue-600 font-medium">
-                    {testimonial.specialty}
-                  </CardDescription>
+                  <p className="text-gray-700 italic">"{testimonial.content}"</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section id="pricing" className="py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Planos para cada momento
+            </h2>
+            <p className="text-xl text-gray-600">
+              Escolha o plano ideal para o tamanho da sua clínica
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {pricingPlans.map((plan, index) => (
+              <Card key={index} className={`relative border-2 ${plan.popular ? 'border-blue-600 shadow-2xl scale-105' : 'border-gray-200 shadow-lg'}`}>
+                {plan.popular && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <Badge className="bg-blue-600 text-white px-4 py-1">Mais Popular</Badge>
+                  </div>
+                )}
+                <CardHeader className="text-center pb-8">
+                  <CardTitle className="text-2xl text-gray-900">{plan.name}</CardTitle>
+                  <CardDescription className="text-gray-600 mb-4">{plan.description}</CardDescription>
+                  <div className="flex items-end justify-center">
+                    <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
+                    <span className="text-gray-600 ml-1">{plan.period}</span>
+                  </div>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 italic leading-relaxed">
-                    "{testimonial.content}"
-                  </p>
+                <CardContent className="space-y-4">
+                  {plan.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-center">
+                      <Check className="w-5 h-5 text-green-600 mr-3 flex-shrink-0" />
+                      <span className="text-gray-700">{feature}</span>
+                    </div>
+                  ))}
+                  <Button 
+                    className={`w-full mt-8 ${plan.popular ? 'bg-blue-600 hover:bg-blue-700' : 'bg-gray-900 hover:bg-gray-800'}`}
+                    size="lg"
+                  >
+                    Começar Teste Grátis
+                  </Button>
                 </CardContent>
               </Card>
             ))}
@@ -246,37 +352,75 @@ const LandingPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-teal-600">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-blue-600 to-teal-600">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Pronto para revolucionar sua clínica?
+            Pronto para transformar sua clínica?
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Junte-se a milhares de dentistas que já descobriram o poder do Dental Mate
+            Junte-se a mais de 2.000 dentistas que já revolucionaram suas práticas com o Dental Mate
           </p>
-          <Button 
-            size="lg" 
-            className="bg-white text-blue-600 hover:bg-blue-50 text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-          >
-            Começar Agora - É Grátis!
-            <ChevronRight className="ml-2 w-5 h-5" />
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" variant="secondary" className="text-lg px-8 py-3">
+              Começar Teste Grátis
+              <ChevronRight className="w-5 h-5 ml-2" />
+            </Button>
+            <Button size="lg" variant="outline" className="text-lg px-8 py-3 text-white border-white hover:bg-white hover:text-blue-600">
+              Falar com Consultor
+            </Button>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-teal-600 rounded-lg flex items-center justify-center">
-                <Activity className="w-5 h-5 text-white" />
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <div className="flex items-center space-x-2 mb-4">
+                <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-teal-600 rounded-lg flex items-center justify-center">
+                  <Heart className="w-5 h-5 text-white" />
+                </div>
+                <span className="text-xl font-bold">Dental Mate</span>
               </div>
-              <span className="text-xl font-bold">Dental Mate</span>
+              <p className="text-gray-400">
+                O sistema de gestão mais completo para clínicas odontológicas modernas.
+              </p>
             </div>
-            <div className="text-gray-400 text-sm">
-              © 2024 Dental Mate. Todos os direitos reservados.
+            
+            <div>
+              <h4 className="font-semibold mb-4">Produto</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#" className="hover:text-white transition-colors">Recursos</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Preços</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Integrações</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">API</a></li>
+              </ul>
             </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4">Suporte</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#" className="hover:text-white transition-colors">Central de Ajuda</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Contato</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Treinamentos</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Status</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4">Empresa</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#" className="hover:text-white transition-colors">Sobre</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Carreiras</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Privacidade</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2024 Dental Mate. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
