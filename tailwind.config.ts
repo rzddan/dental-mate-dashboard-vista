@@ -55,17 +55,6 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
-				},
-				// Cores específicas para consultório dentário
-				dental: {
-					mint: '#E8F5F0',
-					'mint-dark': '#B8E6CC',
-					blue: '#E3F2FD',
-					'blue-dark': '#BBDEFB',
-					cream: '#FFF8E1',
-					'cream-dark': '#F0F4C3',
-					sage: '#F1F8E9',
-					'sage-dark': '#DCEDC8'
 				}
 			},
 			borderRadius: {
