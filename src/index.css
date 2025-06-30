@@ -5,7 +5,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-/* Design system customizado para Dental Mate */
+/* Design system para clínica odontológica */
 
 @layer base {
   :root {
@@ -18,8 +18,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 175 77% 20%; /* teal-700 */
+    --primary-foreground: 0 0% 98%;
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -27,15 +27,15 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 175 84% 32%; /* teal-600 */
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 217.2 91.2% 59.8%;
+    --ring: 175 84% 32%;
 
     --radius: 0.75rem;
   }
@@ -50,7 +50,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 217.2 91.2% 59.8%;
+    --primary: 175 84% 32%; /* teal-600 */
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -59,7 +59,7 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 175 77% 20%; /* teal-700 */
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -67,7 +67,7 @@
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 217.2 91.2% 59.8%;
+    --ring: 175 84% 32%;
   }
 }
 
@@ -78,6 +78,7 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -85,7 +86,7 @@
   }
 }
 
-/* Animações personalizadas */
+/* Animações e utilidades */
 @layer components {
   .hover-scale {
     @apply transition-transform duration-200 hover:scale-105;
@@ -97,6 +98,15 @@
 
   .slide-in {
     @apply animate-slide-in-right;
+  }
+
+  /* Gradients específicos para clínica odontológica */
+  .dental-gradient {
+    @apply bg-gradient-to-br from-teal-500 to-cyan-600;
+  }
+
+  .dental-gradient-soft {
+    @apply bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-teal-900/20 dark:to-cyan-900/20;
   }
 }
 
@@ -111,13 +121,18 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-100;
+  @apply bg-gray-100 dark:bg-gray-800;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 rounded-full;
+  @apply bg-teal-300 dark:bg-teal-700 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-400;
+  @apply bg-teal-400 dark:bg-teal-600;
+}
+
+/* Transições suaves para mudanças de tema */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }

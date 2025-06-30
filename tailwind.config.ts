@@ -55,6 +55,14 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
+				},
+				// Dental clinic specific colors
+				dental: {
+					primary: '#059669', // teal-600
+					secondary: '#0891b2', // cyan-600
+					accent: '#06b6d4', // cyan-500
+					light: '#f0fdfa', // teal-50
+					dark: '#134e4a', // teal-900
 				}
 			},
 			borderRadius: {
